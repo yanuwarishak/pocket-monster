@@ -5,8 +5,8 @@ import { ListContainer } from "./pokemons-list.styles";
 
 const PokemonList = ({ results }) => (
   <ListContainer>
-    {results.map(({ id, ...otherCollectionProps }) => (
-      <PokemonCard key={id} {...otherCollectionProps} />
+    {results.map(({ id, ...otherProps }) => (
+      <PokemonCard key={id} {...otherProps} />
     ))}
   </ListContainer>
 );

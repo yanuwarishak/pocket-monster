@@ -1,13 +1,16 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import { Card } from "./pokemon-card.styles";
 
-const PokemonCard = (props) => {
+const PokemonCard = ({ match, history, name, image }) => {
   return (
-    <Card backgroundImg={props.image}>
-      <h3>{props.name}</h3>
-    </Card>
+    <div onClick={() => history.push(`${match.url}pokemon/${name}`)}>
+      <Card backgroundImg={image}>
+        <h3>{name}</h3>
+      </Card>
+    </div>
   );
 };
 
-export default PokemonCard;
+export default withRouter(PokemonCard);

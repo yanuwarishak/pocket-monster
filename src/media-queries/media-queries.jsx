@@ -1,38 +1,19 @@
-/** @jsx jsx */
-// import { jsx, css } from "@emotion/react";
+const breakpoints = {
+  sm: 500,
+  md: 768,
+  lg: 992,
+  xl: 1200,
+};
 
-const breakpoints = [576, 768, 992, 1200];
-const mq = breakpoints.map((bp) => `@media (min-width: ${bp}px)`);
+const mediaQuery = (n) => {
+  const bpArray = Object.keys(breakpoints).map((key) => [key, breakpoints[key]]);
 
-console.log(mq);
+  const [result] = bpArray.reduce((acc, [name, size]) => {
+    if (n === name) return [...acc, `@media (max-width: ${size}px)`];
+    return acc;
+  }, []);
 
-// render(
-//   <div>
-//     <div
-//       css={{
-//         color: "green",
-//         [mq[0]]: {
-//           color: "gray",
-//         },
-//         [mq[1]]: {
-//           color: "hotpink",
-//         },
-//       }}
-//     >
-//       Some text!
-//     </div>
-//     <p
-//       css={css`
-//         color: green;
-//         ${mq[0]} {
-//           color: gray;
-//         }
-//         ${mq[1]} {
-//           color: hotpink;
-//         }
-//       `}
-//     >
-//       Some other text!
-//     </p>
-//   </div>
-// );
+  return result;
+};
+
+export default mediaQuery;
