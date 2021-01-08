@@ -3,27 +3,60 @@ import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
 import PokemonsList from "./pokemons-list.component";
-import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component"
+import LoadingSpinner from "../../components/loading-spinner/loading-spinner.component";
 
 const GET_POKEMONS = gql`
-  {
-    pokemons(limit: 20, offset: 0) {
+  query pokemons($limit: Int, $offset: Int) {
+    pokemons(limit: $limit, offset: $offset) {
       results {
         id
+        url
         name
         image
-        url
       }
     }
   }
 `;
 
 const PokemonListContainer = () => (
-  <Query query={GET_POKEMONS}>
-    {({ loading, data }) => {
-      return loading ? (
+  <Query
+    query={GET_POKEMONS}
+    variables={{ limit: 20, offset: 0 }}
+    notifyOnNetworkStatusChange={true}
+  >
+    {({ loading, data, fetchMore }) => {
+      console.log(loading)
+      return loading && !data ? (
         <LoadingSpinner />
-      ) :<PokemonsList results={data.pokemons.results}/>;
+      ) : (
+        <PokemonsList
+          loading={loading}
+          results={data.pokemons.results}
+          onLoadMore={() =>
+            fetchMore({
+              variables: {
+                limit: 12,
+                offset: data.pokemons.results.length,
+              },
+              updateQuery: (prev, { fetchMoreResult }) => {
+                console.log(loading);
+                if (!fetchMoreResult) return prev;
+                let prevResult = prev.pokemons.results;
+                let combinedResult = prevResult.concat(
+                  fetchMoreResult.pokemons.results
+                );
+                let results = {
+                  pokemons: {
+                    results: combinedResult,
+                    __typename: "PokemonList",
+                  },
+                };
+                return results;
+              },
+            })
+          }
+        />
+      );
     }}
   </Query>
 );

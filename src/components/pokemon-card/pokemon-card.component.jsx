@@ -1,14 +1,23 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { Card } from "./pokemon-card.styles";
+import PokemonCardContainer from "./pokemon-card.container";
 
-const PokemonCard = ({ match, history, name, image }) => {
+const PokemonCard = ({ match, name, image }) => {
+  let history = useHistory();
+
+  const openDetail = () => {
+    history.push(`${match.url}pokemon/${name}`);
+  }
+
   return (
-    <div onClick={() => history.push(`${match.url}pokemon/${name}`)}>
-      <Card backgroundImg={image}>
-        <h3>{name}</h3>
-      </Card>
+    <div
+      className="card-container"
+      style={{ width: "fit-content", height: "fit-content" }}
+      onClick={openDetail}
+    >
+      <PokemonCardContainer image={image} pokemonName={name} />
     </div>
   );
 };

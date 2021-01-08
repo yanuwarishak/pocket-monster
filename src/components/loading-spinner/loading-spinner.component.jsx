@@ -2,6 +2,8 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const SpinnerOverlay = styled.div`
+  z-index: 9;
+  position: absolute;
   height: 60vh;
   width: 100%;
   display: flex;

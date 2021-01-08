@@ -1,7 +1,6 @@
 import React from 'react'
 
 const PokemonDetail = ({pokemon}) => {
-    console.log(pokemon)
     // const {name, abilities} = pokemon
     return (
         <div>
