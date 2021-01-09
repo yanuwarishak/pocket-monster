@@ -25,7 +25,6 @@ const PokemonListContainer = () => (
     notifyOnNetworkStatusChange={true}
   >
     {({ loading, data, fetchMore }) => {
-      console.log(loading)
       return loading && !data ? (
         <LoadingSpinner />
       ) : (
@@ -39,7 +38,6 @@ const PokemonListContainer = () => (
                 offset: data.pokemons.results.length,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
-                console.log(loading);
                 if (!fetchMoreResult) return prev;
                 let prevResult = prev.pokemons.results;
                 let combinedResult = prevResult.concat(

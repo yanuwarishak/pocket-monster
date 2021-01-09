@@ -1,6 +1,6 @@
 const INITIAL_DATA = {
-  myPokemonLists: [],
-  pokemonCount: 0,
+  myPokemons: 0,
+  myPokemonsList: []
 };
 
 export default INITIAL_DATA;

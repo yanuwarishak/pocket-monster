@@ -3,12 +3,20 @@ import mediaQuery from "../../media-queries/media-queries";
 
 export const ListContainer = styled.div`
   display: flex;
+  margin: auto;
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+`;
+
+export const RowContainer = styled.div`
+  display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   flex-wrap: wrap;
-  max-height: 1200px;
-  max-width: 1344px;
-  overflow: auto;
   overflow-x: hidden;
   ::-webkit-scrollbar {
     display: none;
@@ -18,15 +26,17 @@ export const ListContainer = styled.div`
   }
 `;
 
-export const LoadMore = styled.div`
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+export const LoadMore = styled.button`
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
   border-radius: 20px;
   display: flex;
   width: 200px;
-  height: 100px;
+  height: 25px;
   background-color: yellow;
   color: black;
 `;

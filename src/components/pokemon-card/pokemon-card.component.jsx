@@ -1,24 +1,28 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import styled from "@emotion/styled";
 
 import PokemonCardContainer from "./pokemon-card.container";
 
-const PokemonCard = ({ match, name, image }) => {
+const PokemonCard = ({ name, image }) => {
+  // Use history to open Pokemon detail based from URL
   let history = useHistory();
-
   const openDetail = () => {
-    history.push(`${match.url}pokemon/${name}`);
-  }
+    history.push(`/pokemon/${name}`);
+  };
+
+  // Additional styling
+  const Container = styled.div`
+    width: fit-content;
+    height: fit-content;
+    margin: 10px;
+  `;
 
   return (
-    <div
-      className="card-container"
-      style={{ width: "fit-content", height: "fit-content" }}
-      onClick={openDetail}
-    >
+    <Container onClick={openDetail}>
       <PokemonCardContainer image={image} pokemonName={name} />
-    </div>
+    </Container>
   );
 };
 

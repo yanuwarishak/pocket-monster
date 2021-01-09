@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 
 const SpinnerOverlay = styled.div`
-  z-index: 9;
+  z-index: 100;
   position: absolute;
   height: 60vh;
   width: 100%;
@@ -12,6 +12,7 @@ const SpinnerOverlay = styled.div`
 `;
 
 const SpinnerContainer = styled.div`
+  z-index: 100;
   display: inline-block;
   width: 50px;
   height: 50px;
