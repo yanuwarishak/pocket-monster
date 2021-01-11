@@ -5,11 +5,12 @@ export const CardContainer = styled.div`
   flex-direction: row;
   height: 150px;
   background-color: whitesmoke;
+  margin-bottom: 10px;
 `;
 
 export const PokemonImage = styled.div`
-  background-image: url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png);
-  background-size: 80%;
+  background-image: url(${(props) => props.image});
+  background-size: contain;
   background-position: center;
   background-color: green;
   background-repeat: no-repeat;

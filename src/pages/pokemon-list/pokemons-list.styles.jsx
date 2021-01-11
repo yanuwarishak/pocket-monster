@@ -28,10 +28,12 @@ export const RowContainer = styled.div`
 
 export const LoadMore = styled.button`
   cursor: pointer;
+  user-select: none;
+  outline: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 20px auto;
   padding: 20px;
   border-radius: 20px;
   display: flex;

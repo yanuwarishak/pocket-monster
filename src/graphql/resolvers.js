@@ -1,29 +1,39 @@
 import { gql } from "apollo-boost";
 
+import { addPokemon } from "./my-pokemon.utils";
+
 export const typeDefs = gql`
+  extend type Pokemon {
+    nickname: String
+    image: String
+  }
+
   extend type Mutation {
-    AddPokemon: Int!
+    AddPokemonToList(pokemon: Pokemon!): Pokemon!
   }
 `;
 
-const ADD_POKEMON_TO_LIST = gql`
+const GET_MY_POKEMON_LIST = gql`
   {
-    myPokemons @client
+    myPokemonsList @client
   }
 `;
 
 export const resolvers = {
   Mutation: {
-    addPokemon: (_root, _args, { cache }) => {
-      const { myPokemons } = cache.readQuery({
-        query: ADD_POKEMON_TO_LIST,
+    addPokemonToList: (_root, _args, { cache }) => {
+      const { myPokemonsList } = cache.readQuery({
+        query: GET_MY_POKEMON_LIST,
       });
+      console.log(_args);
+      const newMyPokemonsList = addPokemon(myPokemonsList, _args.pokemon);
 
       cache.writeQuery({
-        query: ADD_POKEMON_TO_LIST,
-        data: { myPokemons: myPokemons + 1 },
+        query: GET_MY_POKEMON_LIST,
+        data: { myPokemonsList: newMyPokemonsList },
       });
-      return myPokemons;
+
+      return newMyPokemonsList;
     },
   },
 };

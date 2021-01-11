@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
+  cursor: pointer;
   border-radius: 10%;
   display: flex;
   align-items: center;

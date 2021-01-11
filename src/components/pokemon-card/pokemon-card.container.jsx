@@ -22,9 +22,11 @@ const GET_POKEMON_TYPE_STATS = gql`
   }
 `;
 
-const PokemonCardContainer = ({ pokemonName, image }) => {
+const PokemonCardContainer = ({ pokemon }) => {
+  // The destructured value will contain pokemon object which hold pokemon.name and pokemon.image
+  const { name, image } = pokemon;
   return (
-    <Query query={GET_POKEMON_TYPE_STATS} variables={{ name: pokemonName }}>
+    <Query query={GET_POKEMON_TYPE_STATS} variables={{ name: name }}>
       {({ loading, data }) => {
         let pokemonType = [];
         let pokemonStats = [];
@@ -44,7 +46,7 @@ const PokemonCardContainer = ({ pokemonName, image }) => {
           <Card
             stats={pokemonStats}
             type={pokemonType}
-            name={pokemonName}
+            name={name}
             image={image}
           />
         );

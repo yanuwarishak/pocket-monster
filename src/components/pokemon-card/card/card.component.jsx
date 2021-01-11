@@ -1,5 +1,7 @@
 import React from "react";
 
+import { default as Owned } from "../../pokemon-owned/pokemon-owned.container";
+
 import {
   CardContainer,
   PokemonType,
@@ -12,27 +14,25 @@ import {
   StatText,
   StatContainer,
   StatsContainer,
-  Owned,
-  OwnedText,
 } from "./card.styles";
 
 const Card = (props) => {
   const { image, name, type, stats } = props;
   return (
-    <CardContainer>
+    <CardContainer poketype={type[0]}>
       <ImageContainer>
         <div style={{ position: "absolute" }}>
           {type.map((type, index) => (
-            <PokemonType key={index} type={type} />
+            <PokemonType key={index} poketype={type} />
           ))}
         </div>
         <PokemonName>{name.toUpperCase()}</PokemonName>
-        <Pokeimage image={image} type={type[0]} />
+        <Pokeimage image={image} poketype={type[0]} />
       </ImageContainer>
       <InfoContainer>
         <TypeContainer>
           {type.map((type, index) => (
-            <TypeText key={index} type={type}>
+            <TypeText key={index} poketype={type}>
               {type.toUpperCase()}
             </TypeText>
           ))}
@@ -46,11 +46,7 @@ const Card = (props) => {
             </StatContainer>
           ))}
         </StatsContainer>
-        <Owned>
-          <OwnedText>
-              Owned: 0
-          </OwnedText>
-        </Owned>
+        <Owned name={name} />
       </InfoContainer>
     </CardContainer>
   );

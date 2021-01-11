@@ -11,18 +11,18 @@ import {
   ReleaseBtn,
 } from "./my-pokemon-card.styles";
 
-const MyPokemonCard = (name) => {
+const MyPokemonCard = ({ name, nickname, image }) => {
   let history = useHistory();
   const openDetail = () => {
-    history.push(`/pokemon/bulbasaur`);
+    history.push(`/pokemon/${name}`);
   };
 
   return (
     <CardContainer onClick={openDetail}>
-      <PokemonImage />
+      <PokemonImage image={image}/>
       <PokemonDataContainer>
-        <PokemonNickname>Kuntul Saurus</PokemonNickname>
-        <PokemonName>Bulbasaur</PokemonName>
+        <PokemonNickname>{nickname.toUpperCase()}</PokemonNickname>
+        <PokemonName>{name.toUpperCase()}</PokemonName>
         <ReleaseBtn>Release</ReleaseBtn>
       </PokemonDataContainer>
     </CardContainer>

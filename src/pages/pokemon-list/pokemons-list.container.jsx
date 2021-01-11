@@ -21,7 +21,7 @@ const GET_POKEMONS = gql`
 const PokemonListContainer = () => (
   <Query
     query={GET_POKEMONS}
-    variables={{ limit: 20, offset: 0 }}
+    variables={{ limit: 12, offset: 0 }}
     notifyOnNetworkStatusChange={true}
   >
     {({ loading, data, fetchMore }) => {
@@ -30,11 +30,11 @@ const PokemonListContainer = () => (
       ) : (
         <PokemonsList
           loading={loading}
-          results={data.pokemons.results}
+          pokemons={data.pokemons.results}
           onLoadMore={() =>
             fetchMore({
               variables: {
-                limit: 12,
+                limit: 6,
                 offset: data.pokemons.results.length,
               },
               updateQuery: (prev, { fetchMoreResult }) => {
@@ -43,13 +43,13 @@ const PokemonListContainer = () => (
                 let combinedResult = prevResult.concat(
                   fetchMoreResult.pokemons.results
                 );
-                let results = {
+                let pokemons = {
                   pokemons: {
                     results: combinedResult,
                     __typename: "PokemonList",
                   },
                 };
-                return results;
+                return pokemons;
               },
             })
           }

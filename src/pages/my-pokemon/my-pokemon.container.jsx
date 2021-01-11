@@ -1,9 +1,8 @@
 import React from "react";
-
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-import Header from "./header.component";
+import MyPokemons from "./my-pokemon.component";
 
 const GET_MY_POKEMON_LIST = gql`
   {
@@ -11,12 +10,12 @@ const GET_MY_POKEMON_LIST = gql`
   }
 `;
 
-const HeaderContainer = () => (
+const MyPokemonsContainer = () => (
   <Query query={GET_MY_POKEMON_LIST}>
     {({ data: { myPokemonsList } }) => (
-      <Header pokemonCount={myPokemonsList.length} />
+      <MyPokemons myPokemons={myPokemonsList} />
     )}
   </Query>
 );
 
-export default HeaderContainer;
+export default MyPokemonsContainer;

@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   position: sticky;
-  z-index: 99;
+  z-index: 2;
   display: flex;
   background-color: whitesmoke;
   box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.5);

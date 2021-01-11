@@ -1,13 +1,12 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import PokemonCardContainer from "./pokemon-card.container";
 
-const PokemonCard = ({ name, image }) => {
-  // Use history to open Pokemon detail based from URL
-  let history = useHistory();
+const PokemonCard = (props) => {
+  const { history, name } = props;
+  const pokemon = { name: props.name, image: props.image };
   const openDetail = () => {
     history.push(`/pokemon/${name}`);
   };
@@ -21,9 +20,10 @@ const PokemonCard = ({ name, image }) => {
 
   return (
     <Container onClick={openDetail}>
-      <PokemonCardContainer image={image} pokemonName={name} />
+      <PokemonCardContainer pokemon={pokemon} />
     </Container>
   );
 };
 
+// Bear in mind that withRouter will add history, match, location and staticContext to the props
 export default withRouter(PokemonCard);

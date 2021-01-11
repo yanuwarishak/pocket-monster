@@ -9,8 +9,11 @@ export const CardContainer = styled.div`
   height: 500px;
   border-radius: 5px;
   border: 1px solid #e2e2e2;
-  box-shadow: 0 0px 6px 2px rgba(227, 255, 149, 0.432);
-  background: linear-gradient(#f3f3f3, #fafafa);
+  box-shadow: 0 0px 6px 2px ${(props) => `${typeColors[props.poketype]}40`};
+  background: linear-gradient(
+    #f3f3f3,
+    ${(props) => `${typeColors[props.poketype]}40`}
+  );
 `;
 
 export const PokemonType = styled.div`
@@ -22,13 +25,13 @@ export const PokemonType = styled.div`
   width: 25px;
   float: left;
   border-radius: 50%;
-  background-color: ${(props) => typeColors[props.type]};
+  background-color: ${(props) => typeColors[props.poketype]};
 `;
 
 export const Pokeimage = styled.img`
   background-image: url(${(props) => props.image});
   background-size: contain;
-  background-color: ${(props) => typeColors[props.type]};
+  background-color: ${(props) => typeColors[props.poketype]};
   background-repeat: no-repeat;
   background-position: center;
   border: 0px solid transparent;
@@ -73,7 +76,7 @@ export const TypeContainer = styled.div`
 export const TypeText = styled.h4`
   font-size: 1.1em;
   margin: 0px 5px;
-  color: ${(props) => typeColors[props.type]};
+  color: ${(props) => typeColors[props.poketype]};
 `;
 
 export const StatsContainer = styled.div`

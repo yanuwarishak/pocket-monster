@@ -4,7 +4,7 @@ import PokemonCard from "../../components/pokemon-card/pokemon-card.component";
 
 import { RowContainer, ListContainer, LoadMore } from "./pokemons-list.styles";
 
-const PokemonList = ({ results, onLoadMore, loading }) => {
+const PokemonsList = ({ pokemons, onLoadMore, loading }) => {
   const loadMore = () => {
     if (!loading) {
       onLoadMore();
@@ -14,7 +14,7 @@ const PokemonList = ({ results, onLoadMore, loading }) => {
     <>
       <ListContainer>
         <RowContainer>
-          {results.map(({ id, name, image }) => (
+          {pokemons.map(({ id, name, image }) => (
             <PokemonCard key={id} name={name} image={image} />
           ))}
         </RowContainer>
@@ -25,4 +25,4 @@ const PokemonList = ({ results, onLoadMore, loading }) => {
   );
 };
 
-export default PokemonList;
+export default PokemonsList;
