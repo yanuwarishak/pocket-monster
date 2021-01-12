@@ -3,18 +3,19 @@ import mediaQuery from "../../media-queries/media-queries";
 
 export const ListContainer = styled.div`
   display: flex;
-  margin: auto;
-  padding: 20px;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
+  overflow: hidden;
 `;
 
 export const RowContainer = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-self: center;
   justify-content: center;
+  padding: 20px 60px;
   flex-wrap: wrap;
   overflow-x: hidden;
   ::-webkit-scrollbar {

@@ -28,7 +28,6 @@ const NicknameForm = ({
     event.preventDefault();
     event.target.value = "";
     if (existingNickname.indexOf(nickname) === -1 && nickname !== "") {
-      alert(`Submitting Name ${nickname}`);
       addPokemonToList(newPokemon);
       handleClose();
     }

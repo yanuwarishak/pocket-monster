@@ -13,6 +13,8 @@ const PokemonCard = (props) => {
 
   // Additional styling
   const Container = styled.div`
+    background-color: white;
+    border-radius: 10px;
     width: fit-content;
     height: fit-content;
     margin: 10px;

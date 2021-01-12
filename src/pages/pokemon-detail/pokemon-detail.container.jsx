@@ -11,14 +11,18 @@ const GET_POKEMON_BY_NAME = gql`
       name
       height
       weight
-      sprites {
-        front_default
-      }
-      abilities {
-        ability {
+      types {
+        type {
           name
         }
-        slot
+      }
+      moves {
+        move {
+          name
+        }
+      }
+      sprites {
+        front_default
       }
     }
   }

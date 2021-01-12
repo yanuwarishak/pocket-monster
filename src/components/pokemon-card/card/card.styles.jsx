@@ -5,15 +5,22 @@ import { typeColors } from "../../pokemon-type/pokemon-type.styles";
 export const CardContainer = styled.div`
   cursor: pointer;
   position: relative;
+  align-self: flex-start;
   width: 315px;
   height: 500px;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 1px solid #e2e2e2;
   box-shadow: 0 0px 6px 2px ${(props) => `${typeColors[props.poketype]}40`};
   background: linear-gradient(
     #f3f3f3,
     ${(props) => `${typeColors[props.poketype]}40`}
   );
+  :hover {
+    background: linear-gradient(
+      #f3f3f3,
+      ${(props) => `${typeColors[props.poketype]}66`}
+    );
+  }
 `;
 
 export const PokemonType = styled.div`
