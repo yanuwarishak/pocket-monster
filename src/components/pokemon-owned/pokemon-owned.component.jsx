@@ -6,7 +6,6 @@ const Owned = ({ pokemonOwned, pokemonName }) => {
     (pokemon) => pokemon.name === pokemonName
   );
   let ownedTotal = ownedPokemon.length;
-  //   console.log(pokemonOwned, pokemonName);
   return (
     <OwnedContainer>
       <OwnedText>Owned {ownedTotal}</OwnedText>

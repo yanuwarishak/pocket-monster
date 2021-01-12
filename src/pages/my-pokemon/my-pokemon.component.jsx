@@ -4,15 +4,15 @@ import { Container } from "./my-pokemon.styles";
 import MyPokemonCard from "../../components/my-pokemon-card/my-pokemon-card.component";
 
 const MyPokemons = ({ myPokemons }) => {
-  // const data = myPokemons.myPokemons;
-  console.log(myPokemons);
+  localStorage.setItem("myPokemonsList", JSON.stringify(myPokemons));
+
   return (
     <div>
       {myPokemons.length ? (
         <Container>
-          {myPokemons.map(({ id, name, nickname, image }) => (
+          {myPokemons.map(({ name, nickname, image }) => (
             <MyPokemonCard
-              key={id}
+              key={nickname}
               name={name}
               nickname={nickname}
               image={image}

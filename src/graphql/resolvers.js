@@ -1,6 +1,6 @@
 import { gql } from "apollo-boost";
 
-import { addPokemon } from "./my-pokemon.utils";
+import { addPokemon, releasePokemon } from "./my-pokemon.utils";
 
 export const typeDefs = gql`
   extend type Pokemon {
@@ -9,24 +9,31 @@ export const typeDefs = gql`
   }
 
   extend type Mutation {
-    AddPokemonToList(pokemon: Pokemon!): Pokemon!
+    AddPokemonToList(pokemon: Pokemon!): [Pokemon]!
+    RemovePokemonFromList(nickname: String!): [Pokemon]!
   }
 `;
 
 const GET_MY_POKEMON_LIST = gql`
   {
-    myPokemonsList @client
+    myPokemonsList @client {
+      name
+      nickname
+      image
+      __typename
+    }
   }
 `;
 
 export const resolvers = {
   Mutation: {
-    addPokemonToList: (_root, _args, { cache }) => {
+    addPokemonToList: (_root, { pokemon }, { cache }) => {
       const { myPokemonsList } = cache.readQuery({
         query: GET_MY_POKEMON_LIST,
       });
-      console.log(_args);
-      const newMyPokemonsList = addPokemon(myPokemonsList, _args.pokemon);
+      console.log(myPokemonsList);
+      const newMyPokemonsList = addPokemon(myPokemonsList, pokemon);
+      console.log(newMyPokemonsList);
 
       cache.writeQuery({
         query: GET_MY_POKEMON_LIST,
@@ -34,6 +41,22 @@ export const resolvers = {
       });
 
       return newMyPokemonsList;
+    },
+
+    removePokemonFromList: (_root, { nickname }, { cache }) => {
+      const { myPokemonsList } = cache.readQuery({
+        query: GET_MY_POKEMON_LIST,
+      });
+
+      console.log(nickname);
+      const newPokemonsList = releasePokemon(myPokemonsList, nickname);
+
+      cache.writeQuery({
+        query: GET_MY_POKEMON_LIST,
+        data: { myPokemonsList: newPokemonsList },
+      });
+
+      return newPokemonsList;
     },
   },
 };

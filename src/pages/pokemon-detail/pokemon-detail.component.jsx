@@ -5,8 +5,6 @@ import PokemonCard from "../../components/pokemon-card/pokemon-card.component";
 import CatchFailed from "../../components/catch-failed/catch-failed.component";
 import { default as NicknameForm } from "../../components/nickname-form/nickname-form.container";
 
-// import { default as CatchPokemon } from "../../components/catch-pokemon/catch-pokemon.container";
-
 const PokemonDetail = ({ pokemon }) => {
   const [showFailed, setShowFailed] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -22,7 +20,6 @@ const PokemonDetail = ({ pokemon }) => {
   const catchPokemon = () => {
     let caught = Math.floor(Math.random() * 2);
     if (caught) {
-      console.log("Pokemon Caught!");
       setShowForm(true);
     } else {
       setShowFailed(true);
@@ -32,9 +29,8 @@ const PokemonDetail = ({ pokemon }) => {
   return (
     <Container>
       <CatchFailed show={showFailed} handleClose={hideFailed} />
-      <NicknameForm show={showForm} handleClose={hideForm} />
+      <NicknameForm pokemon={pokemon} show={showForm} handleClose={hideForm} />
       <PokemonCard image={pokemon.sprites.front_default} name={pokemon.name} />
-      {/* <CatchPokemon pokemon={pokemon} /> */}
       <CatchButton onClick={catchPokemon}>
         <p>Catch</p>
       </CatchButton>

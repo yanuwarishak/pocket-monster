@@ -7,15 +7,18 @@ import Header from "./header.component";
 
 const GET_MY_POKEMON_LIST = gql`
   {
-    myPokemonsList @client
+    myPokemonsList @client {
+      name
+      nickname
+      image
+      __typename
+    }
   }
 `;
 
 const HeaderContainer = () => (
   <Query query={GET_MY_POKEMON_LIST}>
-    {({ data: { myPokemonsList } }) => (
-      <Header pokemonCount={myPokemonsList.length} />
-    )}
+    {({ data: { myPokemonsList } }) => <Header pokemonCount={myPokemonsList} />}
   </Query>
 );
 

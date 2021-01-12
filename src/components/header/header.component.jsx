@@ -26,7 +26,7 @@ const Header = ({ pokemonCount }) => {
       >
         <h3>
           My Pokemon
-          <span> {pokemonCount}</span>
+          <span> {pokemonCount.length}</span>
         </h3>
       </NavLink>
     </Container>

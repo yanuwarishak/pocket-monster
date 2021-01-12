@@ -1,3 +1,11 @@
 export const addPokemon = (myPokemonsList, pokemonToAdd) => {
-  return [...myPokemonsList, { ...pokemonToAdd, nickname: "Solidade" }];
+  return [...myPokemonsList, { ...pokemonToAdd, __typename: "Pokemon" }];
+};
+
+export const releasePokemon = (myPokemonsList, pokemonToRelease) => {
+  console.log(myPokemonsList, pokemonToRelease);
+  const newPokemonList = myPokemonsList.filter(
+    (pokemon) => pokemon.nickname !== pokemonToRelease
+  );
+  return newPokemonList;
 };

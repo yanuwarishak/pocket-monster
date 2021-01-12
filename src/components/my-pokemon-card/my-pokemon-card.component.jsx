@@ -1,6 +1,5 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 import {
   CardContainer,
@@ -8,22 +7,22 @@ import {
   PokemonDataContainer,
   PokemonNickname,
   PokemonName,
-  ReleaseBtn,
 } from "./my-pokemon-card.styles";
 
-const MyPokemonCard = ({ name, nickname, image }) => {
-  let history = useHistory();
+import { default as ReleasePokemon } from "../release-button/release-button.container";
+
+const MyPokemonCard = ({ name, nickname, image, history }) => {
   const openDetail = () => {
     history.push(`/pokemon/${name}`);
   };
 
   return (
-    <CardContainer onClick={openDetail}>
-      <PokemonImage image={image}/>
+    <CardContainer>
+      <PokemonImage image={image} onClick={openDetail} />
       <PokemonDataContainer>
         <PokemonNickname>{nickname.toUpperCase()}</PokemonNickname>
         <PokemonName>{name.toUpperCase()}</PokemonName>
-        <ReleaseBtn>Release</ReleaseBtn>
+        <ReleasePokemon nickname={nickname} />
       </PokemonDataContainer>
     </CardContainer>
   );

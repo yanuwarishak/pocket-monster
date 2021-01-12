@@ -15,7 +15,6 @@ export const RowContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 100%;
   flex-wrap: wrap;
   overflow-x: hidden;
   ::-webkit-scrollbar {

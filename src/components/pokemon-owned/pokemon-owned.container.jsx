@@ -6,7 +6,12 @@ import Owned from "./pokemon-owned.component";
 
 const GET_POKEMON_OWNED = gql`
   {
-    myPokemonsList @client
+    myPokemonsList @client {
+      name
+      nickname
+      image
+      __typename
+    }
   }
 `;
 

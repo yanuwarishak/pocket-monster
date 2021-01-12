@@ -6,7 +6,12 @@ import MyPokemons from "./my-pokemon.component";
 
 const GET_MY_POKEMON_LIST = gql`
   {
-    myPokemonsList @client
+    myPokemonsList @client {
+      name
+      nickname
+      image
+      __typename
+    }
   }
 `;
 
