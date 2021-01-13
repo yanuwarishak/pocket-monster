@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { typeColors } from "../pokemon-type/pokemon-type.styles";
-import mediaQuery from "../../media-queries/media-queries";
 
 export const FormContainer = styled.div`
   position: absolute;
