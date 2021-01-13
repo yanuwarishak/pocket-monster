@@ -31,9 +31,7 @@ export const resolvers = {
       const { myPokemonsList } = cache.readQuery({
         query: GET_MY_POKEMON_LIST,
       });
-      console.log(myPokemonsList);
       const newMyPokemonsList = addPokemon(myPokemonsList, pokemon);
-      console.log(newMyPokemonsList);
 
       cache.writeQuery({
         query: GET_MY_POKEMON_LIST,
@@ -47,8 +45,6 @@ export const resolvers = {
       const { myPokemonsList } = cache.readQuery({
         query: GET_MY_POKEMON_LIST,
       });
-
-      console.log(nickname);
       const newPokemonsList = releasePokemon(myPokemonsList, nickname);
 
       cache.writeQuery({

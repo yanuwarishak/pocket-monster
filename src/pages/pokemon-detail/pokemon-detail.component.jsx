@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import {
   Container,
@@ -8,14 +8,21 @@ import {
   PokemonName,
   TypeContainer,
   TypeText,
+  SizeContainer,
+  SizeText,
+  WeightHeightContainer,
+  Label,
+  TableHeading,
 } from "./pokemon-detail.styles";
 import CatchFailed from "../../components/catch-failed/catch-failed.component";
 import { default as NicknameForm } from "../../components/nickname-form/nickname-form.container";
 import Pokeball from "../../components/pokeball/pokeball.component";
 
 const PokemonDetail = ({ pokemon }) => {
+  useEffect(() => {
+    document.title = `${pokemon.name.toUpperCase()}`;
+  }, [pokemon.name]);
   // Put all types on an array
-  console.log(pokemon);
   let pokemonTypes = [];
   let typesArr = pokemon.types;
   typesArr.forEach((element) => {
@@ -48,10 +55,11 @@ const PokemonDetail = ({ pokemon }) => {
       setShowFailed(true);
     }
   };
-
   return (
     <Container poketype={pokemonTypes[0]}>
-      <PokemonName>{pokemon.name.toUpperCase()}</PokemonName>
+      <NicknameForm pokemon={pokemon} show={showForm} handleClose={hideForm} />
+      <CatchFailed show={showFailed} handleClose={hideFailed} />
+      <PokemonName>{pokemon.name}</PokemonName>
       <TypeContainer>
         {pokemonTypes.map((type, index) => (
           <TypeText key={index} poketype={type}>
@@ -64,18 +72,26 @@ const PokemonDetail = ({ pokemon }) => {
         poketype={pokemonTypes[0]}
       />
       <div onClick={catchPokemon}>
-        <Pokeball />
+        <Pokeball type={pokemonTypes[0]} />
       </div>
-      <NicknameForm pokemon={pokemon} show={showForm} handleClose={hideForm} />
-      <CatchFailed show={showFailed} handleClose={hideFailed} />
-      <h2>Moves</h2>
+      <SizeContainer>
+        <WeightHeightContainer>
+          <Label>Weight</Label>
+          <SizeText>{pokemon.weight / 100} kg</SizeText>
+        </WeightHeightContainer>
+        <WeightHeightContainer>
+          <Label>Height</Label>
+          <SizeText>{pokemon.height / 10} m</SizeText>
+        </WeightHeightContainer>
+      </SizeContainer>
+      <TableHeading>
+        <SizeText>Moves</SizeText>
+      </TableHeading>
       <MoveContainer>
         {pokemonMoves.map((moves) => (
-          <MoveText>{moves}&nbsp;</MoveText>
+          <MoveText key={moves}>{moves}</MoveText>
         ))}
       </MoveContainer>
-      {/* <h2>{pokemon.weight}</h2> */}
-      {/* <h2>{pokemon.height}</h2> */}
     </Container>
   );
 };

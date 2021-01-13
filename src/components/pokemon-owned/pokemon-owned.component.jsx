@@ -8,7 +8,7 @@ const Owned = ({ pokemonOwned, pokemonName }) => {
   let ownedTotal = ownedPokemon.length;
   return (
     <OwnedContainer>
-      <OwnedText>Owned {ownedTotal}</OwnedText>
+      <OwnedText>Owned: {ownedTotal}</OwnedText>
     </OwnedContainer>
   );
 };

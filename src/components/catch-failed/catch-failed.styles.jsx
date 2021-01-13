@@ -11,13 +11,20 @@ export const ModalContainer = styled.div`
 
 export const ModalOverlay = styled.div`
   position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  z-index: 5;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.5);
+`;
+
+export const PunctuationMark = styled.h1`
+  font-size: 100px;
+  margin: 10px 0px;
+  color: red;
 `;
 
 export const CardContainer = styled.div`
@@ -34,6 +41,7 @@ export const CardContainer = styled.div`
 `;
 
 export const CardText = styled.h3`
+  margin: 0px 0px 40px 0px;
   font-size: 20px;
   color: #000;
 `;

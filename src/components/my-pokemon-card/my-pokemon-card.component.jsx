@@ -20,8 +20,8 @@ const MyPokemonCard = ({ name, nickname, image, history }) => {
     <CardContainer>
       <PokemonImage image={image} onClick={openDetail} />
       <PokemonDataContainer>
-        <PokemonNickname>{nickname.toUpperCase()}</PokemonNickname>
-        <PokemonName>{name.toUpperCase()}</PokemonName>
+        <PokemonNickname>{nickname}</PokemonNickname>
+        <PokemonName>{name}</PokemonName>
         <ReleasePokemon nickname={nickname} />
       </PokemonDataContainer>
     </CardContainer>

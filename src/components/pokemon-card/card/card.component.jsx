@@ -26,7 +26,7 @@ const Card = (props) => {
             <PokemonType key={index} poketype={type} />
           ))}
         </div>
-        <PokemonName>{name.toUpperCase()}</PokemonName>
+        <PokemonName poketype={type[0]}>{name}</PokemonName>
         <Pokeimage image={image} poketype={type[0]} />
       </ImageContainer>
       <InfoContainer>

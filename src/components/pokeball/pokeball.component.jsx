@@ -1,8 +1,25 @@
 import React from "react"
-
+import styled from "@emotion/styled"
 import "./pokeball.css";
+import { typeColors } from "../pokemon-type/pokemon-type.styles";
 
-const Pokeball = () => (
+const CatchContainer = styled.div`
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px ${(props) => typeColors[props.type]};
+  border-radius: 20px;
+  margin: auto;
+  margin-top: 10px;
+  width: fit-content;
+  padding: 5px 10px;
+  background-color: #ffffff;
+`
+
+
+const Pokeball = ({type}) => (
     <div className="container">
         <svg className="ball" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.52 259.52">
             <circle fill="#fff" cx="129.76" cy="129.76" r="120.76"/>
@@ -16,9 +33,9 @@ const Pokeball = () => (
             <path fill="#dd3f3c" d="M196.76,77.12a82.74,82.74,0,0,0-45.65-30.63l-6.69-1.72,4.47-17.44,6.69,1.72A100.8,100.8,0,0,1,211.2,66.37Z"/>
             <path fill="#eaeaea" d="M99,228.39,92.5,226a100.8,100.8,0,0,1-51.71-42.56l15.42-9.29a82.74,82.74,0,0,0,42.45,34.93l6.49,2.36Z"/>
         </svg>
-        <div className="catch-container">
+        <CatchContainer type={type}>
             <h3 className="catch-text">Catch</h3>
-        </div>
+        </CatchContainer>
     </div>
 )
 

@@ -3,7 +3,6 @@ export const addPokemon = (myPokemonsList, pokemonToAdd) => {
 };
 
 export const releasePokemon = (myPokemonsList, pokemonToRelease) => {
-  console.log(myPokemonsList, pokemonToRelease);
   const newPokemonList = myPokemonsList.filter(
     (pokemon) => pokemon.nickname !== pokemonToRelease
   );

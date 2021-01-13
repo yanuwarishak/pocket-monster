@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import { Container } from "./my-pokemon.styles";
+import {
+  ListContainer,
+  Container,
+  NoList,
+  CatchText,
+  PokeballImage,
+  HomeButton,
+  RibbonHeader,
+} from "./my-pokemon.styles";
+
 import MyPokemonCard from "../../components/my-pokemon-card/my-pokemon-card.component";
+import { Link } from "react-router-dom";
 
 const MyPokemons = ({ myPokemons }) => {
+  useEffect(() => {
+    document.title = "My Pokemon";
+  }, []);
   localStorage.setItem("myPokemonsList", JSON.stringify(myPokemons));
 
   return (
-    <div>
+    <Container>
+      <RibbonHeader>My Pokemon</RibbonHeader>
       {myPokemons.length ? (
-        <Container>
+        <ListContainer>
           {myPokemons.map(({ name, nickname, image }) => (
             <MyPokemonCard
               key={nickname}
@@ -18,11 +32,18 @@ const MyPokemons = ({ myPokemons }) => {
               image={image}
             />
           ))}
-        </Container>
+        </ListContainer>
       ) : (
-        <h1>Catch some Pokemon!</h1>
+        <NoList>
+          <CatchText>It's lonely here...</CatchText>
+          <CatchText>Let's catch some Pokemon!</CatchText>
+          <PokeballImage />
+          <Link to="/">
+            <HomeButton>Open Pokedex</HomeButton>
+          </Link>
+        </NoList>
       )}
-    </div>
+    </Container>
   );
 };
 

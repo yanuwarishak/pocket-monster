@@ -15,7 +15,11 @@ export const OwnedContainer = styled.div`
 `;
 
 export const OwnedText = styled.h4`
-  font-size: 0.8em;
+  font-size: 0.9em;
+  font-weight: 500;
   margin: 0px 5px;
   color: white;
+  @media (max-width: 320px) {
+    font-size: 0.7em;
+  }
 `;

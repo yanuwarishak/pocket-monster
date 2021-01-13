@@ -7,6 +7,7 @@ import App from "./App";
 import { ApolloProvider } from "react-apollo";
 import client from "./graphql/graphql-config";
 import { default as data } from "./graphql/initial-data";
+import * as serviceWorker from './serviceWorker';
 
 
 client.writeData({ data });
@@ -21,3 +22,5 @@ ReactDOM.render(
   </ApolloProvider>,
   document.getElementById("root")
 );
+
+serviceWorker.register();

@@ -4,6 +4,7 @@ import {
   ModalOverlay,
   CardContainer,
   CardText,
+  PunctuationMark
 } from "./catch-failed.styles";
 
 const CatchFailed = ({ show, handleClose }) => {
@@ -12,6 +13,7 @@ const CatchFailed = ({ show, handleClose }) => {
     <ModalContainer style={display}>
       <ModalOverlay onClick={handleClose}>
         <CardContainer>
+          <PunctuationMark>!</PunctuationMark>
           <CardText>It ran away...</CardText>
         </CardContainer>
       </ModalOverlay>
