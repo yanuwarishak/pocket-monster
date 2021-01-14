@@ -14,7 +14,7 @@ client.writeData({ data });
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <React.StrictMode>
         <App />
       </React.StrictMode>

@@ -23,6 +23,7 @@ export const Container = styled.div`
 `;
 
 export const StyledLink = styled(NavLink)`
+  user-select: none;
   padding: 5px 0px;
   display: flex;
   flex-direction: column;
@@ -31,6 +32,7 @@ export const StyledLink = styled(NavLink)`
   justify-content: center;
   height: 50px;
   font-weight: bold;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 `;
 
 export const NavIcon = styled.div`

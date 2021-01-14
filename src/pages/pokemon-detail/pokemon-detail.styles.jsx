@@ -68,6 +68,7 @@ export const MoveContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   background-color: white;
   border-radius: 0px 0px 10px 10px;
@@ -98,6 +99,8 @@ export const TableHeading = styled.div`
 
 export const MoveText = styled.h3`
   text-transform: capitalize;
+  text-align: center;
+  align-self: center;
   font-size: 20px;
   width: calc(50% - 10px);
   color: white;

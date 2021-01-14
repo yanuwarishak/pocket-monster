@@ -1,11 +1,10 @@
-import { render, screen } from "@testing-library/react";
 import App from "./App";
+import { render } from "@testing-library/react";
 import { ApolloProvider } from "react-apollo";
-import client from "./graphql/graphql-config";
 import { BrowserRouter } from "react-router-dom";
-// import { MockedProvider } from "@apollo/react-testing";
+import client from "./graphql/graphql-config";
 
-test("it renders", () => {
+test("It renders App Component", () => {
   render(
     <ApolloProvider client={client}>
       <BrowserRouter>
@@ -13,6 +12,4 @@ test("it renders", () => {
       </BrowserRouter>
     </ApolloProvider>
   );
-  // const linkElement = screen.getByText(/Pokedex/i);
-  // expect(linkElement).toBeInTheDocument();
 });

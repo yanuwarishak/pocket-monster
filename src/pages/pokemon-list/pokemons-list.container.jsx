@@ -21,7 +21,7 @@ const GET_POKEMONS = gql`
 const PokemonListContainer = () => (
   <Query
     query={GET_POKEMONS}
-    variables={{ limit: 10, offset: 0 }}
+    variables={{ limit: 6, offset: 0 }}
     notifyOnNetworkStatusChange={true}
   >
     {({ loading, data, fetchMore }) => {
@@ -34,7 +34,7 @@ const PokemonListContainer = () => (
           onLoadMore={() =>
             fetchMore({
               variables: {
-                limit: 5,
+                limit: 6,
                 offset: data.pokemons.results.length,
               },
               updateQuery: (prev, { fetchMoreResult }) => {

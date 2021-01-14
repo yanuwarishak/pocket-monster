@@ -24,7 +24,13 @@ export const TextContainer = styled.div`
   height: fit-content;
   box-sizing: border-box;
   padding: 20px;
+  margin: 10px;
   background-color: violet;
   border-radius: 10px;
   color: white;
+`;
+
+export const InfoText = styled.h1`
+  text-transform: capitalize;
+  margin: 0px 0px 5px 0px;
 `;
